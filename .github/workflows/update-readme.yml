@@ -40,7 +40,7 @@ jobs:
         git config --global user.name 'wannabeing'
         git config --global user.email 'wannabeing@naver.com'
         git add -A
-        git commit -am "docs: update README.md"
+        git commit -am "docs: README.md 업데이트"
     - name: Push changes
       run: |
         git push
