@@ -1,0 +1,43 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# 출처: https://velog.io/@723poil/%EB%B0%B1%EC%A4%80-%EB%AC%B8%EC%A0%9C-%EC%97%85%EB%A1%9C%EB%93%9C-%EC%9E%90%EB%8F%99%ED%99%94%ED%95%98%EA%B8%B0feat.-readme-%EC%9E%90%EB%8F%99%ED%99%94
+
+name: Update README
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install python-leetcode
+    - name: Run update.py
+      run: |
+        python update.py
+    - name: Commit changes
+      run: |
+        git config --global user.name 'wannabeing'
+        git config --global user.email 'wannabeing@naver.com'
+        git add -A
+        git commit -am "docs: update README.md"
+    - name: Push changes
+      run: |
+        git push
