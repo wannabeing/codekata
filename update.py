@@ -1,8 +1,13 @@
 import os
 from urllib import parse
 
-HEADER="""#
-# 백준, 프로그래머스 문제 풀이 목록
+HEADER = """# 코드카타(CodeKata)
+
+A kata is an exercise in karate where you repeat a form many, many times, making little improvements in each.
+
+카타는 하나의 양식을 여러 번 반복하면서 조금씩 개선하는 가라데의 운동입니다.  
+SQL과 알고리즘 문제를 반복적으로 풀며 코딩 실력을 단련하고자 합니다.
+
 """
 
 def main():
@@ -36,7 +41,7 @@ def main():
       if directory in ["백준", "프로그래머스"]:
         content += "## 📚 {}\n".format(directory)
       else:
-        content += "### 🚀 {}\n".format(directory)
+        content += "### 🚀 LEVEL {}\n".format(directory)
         content += "| 문제번호 | 링크 |\n"
         content += "| ----- | ----- |\n"
       directories.append(directory)
