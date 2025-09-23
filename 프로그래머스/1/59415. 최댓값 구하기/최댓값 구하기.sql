@@ -1,0 +1,3 @@
+select DATETIME AS '시간'
+from ANIMAL_INS
+order by DATETIME DESC LIMIT 1;
